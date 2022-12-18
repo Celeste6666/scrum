@@ -3,18 +3,20 @@
 @tailwind components;
 @tailwind utilities;
 
-.btn {
-  @apply bg-primary rounded-xl text-center leading-6 font-medium text-button
-}
+@layer utilities {
+  .btn {
+    @apply bg-primary rounded-xl text-center leading-6 font-medium text-button
+  }
 
-.btn-disabled{
-  @apply bg-primary-disabled
-}
+  .btn-disabled{
+    @apply bg-primary-disabled
+  }
 
-.btn-active {
-  @apply primary-active drop-shadow-3xl
-}
+  .btn-active {
+    @apply primary-active drop-shadow-3xl
+  }
 
-.btn-hover {
-  @apply primary-hover drop-shadow-3xl
+  .btn-hover {
+    @apply primary-hover drop-shadow-3xl
+  }
 }
