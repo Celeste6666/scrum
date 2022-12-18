@@ -1,70 +1,27 @@
-# Getting Started with Create React App
+作品連結: []()
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 作品簡介
 
-## Available Scripts
+六角學院推出的 2022 F2E 活動中第三周的主題，透過拖曳遊戲及對話的互動來加深對敏捷是開發的了解，除了利用 React 框架實現外，還加上使用 Taiwind CSS 來客製化 CSS 效果。
 
-In the project directory, you can run:
+感謝炙燒三重奏提供的[UI 設計稿](https://2022.thef2e.com/users/12061549261446883382)
 
-### `npm start`
+### 使用技術
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- react
+- React Router v6
+- redux Toolkit
+- react-redux
+- Tailwind CSS
+- drag API
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### 學習日誌
 
-### `npm test`
+#### 01
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+配置文件內容
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 下載 Tailwind CSS
+- 安裝 PostCSS : 有 autoprefixer 功能
+- 安裝 postcss-nesting 或 postcss-nested : 讓 CSS 代碼能夠像是 SASS 一樣是巢狀式。(postcss.config.js 中需要配置)
+- 配置客製化的 tailwind.config.js 文件(將要客製化的項目放入theme.extend中)。
