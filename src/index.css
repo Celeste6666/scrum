@@ -1,22 +1,54 @@
-@import "./reset.css";
 @tailwind base;
+@layer base{
+  body {
+    @apply text-body leading-7 overflow-x-hidden
+  }
+}
 @tailwind components;
+
+@layer components {
+  .btn {
+    @apply rounded-xl text-center font-medium text-button text-white ;
+  }
+
+  .btn-bg {
+    @apply btn bg-primary shadow-button py-3.5 px-14
+  }
+  .full-screen {
+    @apply w-screen h-screen bg-cover
+  }
+  .card {
+    @apply w-screen h-screen flex justify-center items-center;
+  }
+  .card_body{
+    @apply w-3/4 bg-linear backdrop-blur-md rounded-3xl py-5 shadow-card-body;
+  }
+  .card_title{
+    @apply text-h4 text-primary-active text-center
+  }
+
+  .food{
+    @apply w-full h-full flex items-center justify-center relative rounded-lg py-1.5 text-white leading-5 cursor-move
+  }
+
+  .food::before{
+    content: "";
+    background-image: url(@/assets/Vector.svg);
+    @apply w-3 h-3 absolute top-1 left-1 z-10 bg-cover;
+  }
+
+  .food::after{
+    content: "";
+    @apply absolute -right-10 z-10 w-8 h-8 bg-contain bg-no-repeat;
+  }
+  .priority{
+    @apply bg-no-repeat w-full text-center text-burger-meat font-bold;
+  }
+}
 @tailwind utilities;
 
 @layer utilities {
-  .btn {
-    @apply bg-primary rounded-xl text-center leading-6 font-medium text-button
-  }
-
-  .btn-disabled{
-    @apply bg-primary-disabled
-  }
-
-  .btn-active {
-    @apply primary-active drop-shadow-3xl
-  }
-
-  .btn-hover {
-    @apply primary-hover drop-shadow-3xl
+  .disabled{
+    @apply cursor-none pointer-events-none bg-primary-disabled shadow-none
   }
 }

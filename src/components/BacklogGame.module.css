@@ -1,0 +1,15 @@
+.meat::after {
+  background-image: url(@/assets/food/meat.png);
+}
+
+.lettuce::after {
+  background-image: url(@/assets/food/lettuce.png);
+}
+
+.cheese::after {
+  background-image: url(@/assets/food/cheese.png);
+}
+
+.tomato::after {
+  background-image: url(@/assets/food/tomato.png);
+}

@@ -2,7 +2,6 @@ import App from "./App";
 import AppClear from "./components/AppClear";
 import Intro from "./pages/Intro";
 import Role from "./pages/Role";
-import RoleIntro from "./components/RoleIntro"
 import Backlog from "./pages/Backlog";
 import BacklogGame from "./components/BacklogGame";
 import Planning from "./pages/Planning";
@@ -30,12 +29,8 @@ const routes = [
     element: <Intro/>,
   },
   {
-    path: "/role",
+    path: "/role/:roleId",
     element: <Role/>,
-    children: [{
-      path: ":id",
-      element: <RoleIntro />
-    }]
   },
   {
     path: "/backlog",
@@ -52,11 +47,11 @@ const routes = [
     element: <Planning />,
     children: [
       {
-        path: "planningchat",
+        path: "chat",
         element: <PlanningChat />
       },
       {
-        path: "planningpoint",
+        path: "point",
         element: <PlanningPoint />
       }
     ]

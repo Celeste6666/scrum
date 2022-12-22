@@ -17,11 +17,8 @@
 
 ### 學習日誌
 
-#### 01
+1. 如何設置 alias ==> 透過第三方插件 craco
+    - `npm i -D @craco/craco`
+    - craco.config.js 配置 alias
+    - 修改 package.json 內的 script
 
-配置文件內容
-
-- 下載 Tailwind CSS
-- 安裝 PostCSS : 有 autoprefixer 功能
-- 安裝 postcss-nesting 或 postcss-nested : 讓 CSS 代碼能夠像是 SASS 一樣是巢狀式。(postcss.config.js 中需要配置)
-- 配置客製化的 tailwind.config.js 文件(將要客製化的項目放入theme.extend中)。
