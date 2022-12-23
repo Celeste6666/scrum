@@ -12,13 +12,5 @@
 - React Router v6
 - redux Toolkit
 - react-redux
-- Tailwind CSS
+- Tailwind CSS & tailwind-scrollbar
 - drag API
-
-### 學習日誌
-
-1. 如何設置 alias ==> 透過第三方插件 craco
-    - `npm i -D @craco/craco`
-    - craco.config.js 配置 alias
-    - 修改 package.json 內的 script
-

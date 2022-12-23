@@ -1,8 +1,12 @@
 /** @type {import("tailwindcss").Config} */
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  plugins: [
+    require('tailwind-scrollbar')
   ],
   theme: {
     extend: {
@@ -19,7 +23,7 @@ module.exports = {
         h6: "1.25rem",//20
         body: "1rem",//16
         button: "1rem", //16
-        caption: "1rem" //16
+        caption: "0.875rem" //16
       },
       colors: {
         primary: "#2684FF",
@@ -39,6 +43,7 @@ module.exports = {
         "role-po": "#589EFA",
         "role-sm": "#FF7B7B",
         "role-dt": "#F07319",
+        "card": "#f6f6f6"
       },
       boxShadow: {
         'button': '0px 4px 12px #2684FF',
@@ -48,7 +53,6 @@ module.exports = {
         "base-pattern-A": "url('/src/assets/basePattern1.png')",
         "base-pattern-B": "url('/src/assets/basePattern2.png')",
         "base-pattern-C": "url('/src/assets/basePattern3.png')",
-        linear: "linear-gradient(151.16deg, rgba(255, 255, 255, 0.8) 1.11%, rgba(225, 225, 225, 0.264) 98.42%)",
         "burger-top": "url('/src/assets/food/burger-top.png')",
         "burger-bottom": "url('/src/assets/food/burger-bottom.png')",
       },

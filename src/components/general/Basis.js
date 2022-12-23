@@ -21,7 +21,6 @@ Basis.propTypes = {
   role: PropTypes.string.isRequired,
   roleAlt: PropTypes.string.isRequired,
   pattern: PropTypes.string.isRequired,
-  next: PropTypes.string.isRequired,
 }
 
 export default Basis

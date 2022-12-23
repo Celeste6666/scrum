@@ -1,7 +1,10 @@
 @tailwind base;
 @layer base{
   body {
-    @apply text-body leading-7 overflow-x-hidden
+    @apply text-body leading-7 overflow-hidden
+  }
+  img{
+    @apply max-w-none
   }
 }
 @tailwind components;
@@ -21,7 +24,7 @@
     @apply w-screen h-screen flex justify-center items-center;
   }
   .card_body{
-    @apply w-3/4 bg-linear backdrop-blur-md rounded-3xl py-5 shadow-card-body;
+    @apply w-3/4 bg-card backdrop-blur-md rounded-3xl py-5 shadow-card-body;
   }
   .card_title{
     @apply text-h4 text-primary-active text-center
@@ -40,6 +43,9 @@
   .food::after{
     content: "";
     @apply absolute -right-10 z-10 w-8 h-8 bg-contain bg-no-repeat;
+  }
+  .food.foodAfterEmpty::after{
+    @apply bg-none
   }
   .priority{
     @apply bg-no-repeat w-full text-center text-burger-meat font-bold;

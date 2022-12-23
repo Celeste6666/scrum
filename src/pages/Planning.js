@@ -7,7 +7,7 @@ function Planning() {
     <>
       {
         useMatch("/planning") ?
-                <Basis role={PO} roleAlt="PO" pattern="bg-Basis-pattern-C">
+          <Basis role={PO} roleAlt="PO" pattern="bg-Basis-pattern-C">
           <h4 className="card_body card_title py-2.5 mb-5">短衝規劃會議 (Sprint Planning)</h4>
           <div className="ml-8">
             <p className="bg-white p-5 rounded-xl">
