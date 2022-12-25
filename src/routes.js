@@ -61,11 +61,11 @@ const routes = [
     element: <Sprint />,
     children: [
       {
-        path: "sprintexplanation",
+        path: "explanation",
         element: <SprintExplanation/>
       },
       {
-        path: "sprintgame",
+        path: "game",
         element: <SprintGame/>
       }
     ]

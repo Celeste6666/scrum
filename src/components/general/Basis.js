@@ -6,7 +6,7 @@ function Basis(props) {
       <div className="card flex-col">
         {/* title */}
         {children[0]}
-        <div className="card_body flex justify-between items-center px-40 py-24 relative">
+        <div className="card_body flex justify-between items-center px-36 py-20 relative">
         <img src={role} alt={roleAlt} className="w-60 h-60" />
         {/* content */}
           {children[1]}

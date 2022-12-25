@@ -4,6 +4,7 @@ import GameBasis from '@/components/general/GameBasis';
 import BtnChallengeAccept from '@/components/general/BtnChallengeAccept';
 import PO from '@/assets/intro/PO.png';
 import styles from './BacklogGame.module.css';
+import {dragstart_handler, dragover_handler, drop_handler} from "@/utils/drag";
 
 function BacklogGame() {
     const burgerContents = useSelector((state) => state.burgerSlice);
@@ -12,29 +13,6 @@ function BacklogGame() {
 
   const [dragTarget, setDragTarget] = useState([]);
 
-  const dragstart_handler = (e) => {
-    // DataTransfer.effectAllowed 属性指定为拖动源设置所需的拖动效果，应该在dragstart事件中设置此属性
-    e.dataTransfer.effectAllowed = 'move';
-    setDragSource(e.target);
-  };
-
-  const dragover_handler = (e) => {
-    // 瀏覽器預設是不能在拖曳後進行放置，所以必須取消預設行為
-    e.preventDefault();
-    // DataTransfer.dropEffect 属性控制在拖放操作中给用户的反馈
-    // 最后一次 dragenter 或 dragover 事件后 dropEffect 的值即為 drop 和 dragend 事件，dropEffect 会被设置为想要得到的值
-    // dropEffect 是“move”，那么被拖拽的数据会从源中移除。
-    e.dataTransfer.dropEffect = 'move';
-  };
-  const drop_handler = (e) => {
-    // 瀏覽器預設是不能在拖曳後進行放置，所以必須取消預設行為
-    e.preventDefault();
-    if (e.target.dataset.order === dragSource.dataset.order) {
-      e.target.appendChild(dragSource);
-      setDragTarget([...dragTarget, dragSource.dataset.order]);
-    }
-  };
-
   return (
     <GameBasis>
       {/* title */}
@@ -42,14 +20,14 @@ function BacklogGame() {
         產品代辦清單 (Product Backlog)
       </h4>
       {/* game components */}
-      <div className="grid grid-cols-2 gap-36 border rounded-xl py-3.5 px-14">
+      <div className="w-full grid grid-cols-2 gap-36 border rounded-xl py-2 px-14">
         {/* game component left */}
         <div className="flex flex-col justify-between items-center">
           <h6 className="text-h6 text-primary-active mb-5">「人才招募系統」內容物</h6>
           {burgerContents.map(({parentClass, id, style, content}) => (
             <div
               className={
-                'w-full h-12 border border-dashed border-primary-disabled my-0.5 rounded-lg ' +
+                'drag-border w-full ' +
                 parentClass
               }
               key={id}
@@ -58,7 +36,7 @@ function BacklogGame() {
                 draggable="true"
                 data-order={id}
                 className={style}
-                onDragStart={(e) => dragstart_handler(e)}
+                onDragStart={(e) => dragstart_handler(e, setDragSource, dragTarget, setDragTarget)}
               >
                 {content}
               </button>
@@ -77,7 +55,7 @@ function BacklogGame() {
               }
               key={id}
               data-order={id}
-              onDrop={(e) => drop_handler(e)}
+              onDrop={(e) => drop_handler(e, dragSource, dragTarget, setDragTarget)}
               onDragOver={(e) => dragover_handler(e)}
             ></div>
           ))}

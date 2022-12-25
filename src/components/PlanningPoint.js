@@ -10,10 +10,10 @@ function PlanningPoint() {
       {/* title */}
       <h4 className="card_body card_title py-2.5 mb-3">短衝點數 (Sprint Point)</h4>
       {/* game components */}
-      <div className="grid grid-cols-2 gap-40 border rounded-xl py-3.5 px-20">
+      <div className="grid grid-cols-2 gap-32 border rounded-xl py-3.5 pl-20 pr-12">
         {/* game component left */}
         <div className="flex flex-col justify-between items-center">
-          <h6 className="text-h6 text-primary-active mb-5">產品待辦清單（Product Backlog）</h6>
+          <h6 className="text-h6 text-primary-active mb-4">產品待辦清單（Product Backlog）</h6>
           <div className="bg-burger-top bg-cover py-3.5 priority order-0">優先度高</div>
           {burgerContents.map(({ order, id, style, content, point }) => (
             <div
@@ -29,7 +29,7 @@ function PlanningPoint() {
                 data-order={id}
                 className={style + ' foodAfterEmpty relative'}
               >
-                <span className={style + ' foodAfterEmpty w-1/6 h-full absolute -left-16'}>
+                <span className={style + ' foodAfterEmpty foodBeforeEmpty w-1/6 h-full absolute -left-16'}>
                   {point}
                 </span>
                 <span>{content}</span>
@@ -41,7 +41,7 @@ function PlanningPoint() {
 
         {/* game component right */}
         <div className="flex flex-col justify-between items-center">
-          <h6 className="text-h6 text-primary-active mb-5">短衝代辦清單</h6>
+          <h6 className="text-h6 text-primary-active mb-4">短衝代辦清單</h6>
           <span className="text-primary">限制 20點 / 5人</span>
           {burgerContents.map(({ id, order }) => (
             <div
@@ -65,7 +65,7 @@ function PlanningPoint() {
         就像是，我們為每個食材訂出烹飪時間，在有限的時間內選擇要烹飪食材。
       </p>
       {/* complete */}
-      <BtnChallengeAccept text="完成" next="/planning" addClass="ml-auto" />
+      <BtnChallengeAccept text="完成" next="/sprint" addClass="ml-auto" />
     </GameBasis>
   );
 }
