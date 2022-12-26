@@ -1,7 +1,6 @@
 import { useId, useState } from 'react';
 import GameBasis from '@/components/general/GameBasis';
 import BtnChallengeAccept from '@/components/general/BtnChallengeAccept';
-import PO from '@/assets/intro/PO.png';
 import Scrum from '@/assets/Scrum.png';
 import {dragstart_handler, dragover_handler, drop_handler, dragend_handler} from "@/utils/drag";
 
@@ -59,8 +58,6 @@ function SprintGame() {
           ))}
         </div>
       </div>
-      {/* photo */}
-      <img src={PO} alt="PO" width="55" height="70" className="inline-block" />
       {/* note */}
       <p className="w-7/12 align-middle bg-white p-2 rounded-xl text-caption leading-5 ml-2.5">
         換你試試看! 在這經典的 <span className="text-primary-hover">Scrum流程圖</span>{' '}

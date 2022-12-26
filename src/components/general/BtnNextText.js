@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom";
 
 function BtnNextText(props) {
-  const {next} = props;
+  const {next, addClass} = props;
   return (
-    <Link to={next} className="btn text-primary absolute bottom-8 right-8">
+    <Link to={next} className={"btn text-primary bottom-8 right-8 " + addClass}>
       <span className="inline-block align-middle">下一步</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"

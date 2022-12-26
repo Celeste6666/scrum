@@ -2,6 +2,7 @@ import { useMatch, Outlet } from 'react-router-dom';
 import Basis from '@/components/general/Basis';
 import BtnNextText from '../components/general/BtnNextText';
 import PO from '@/assets/intro/PO.png';
+import Confluence from "@/assets/confluence-logo.png";
 function Sprint() {
   return (
     <>
@@ -23,9 +24,12 @@ function Sprint() {
             <br />
             在這裡我們推薦使用<span className="text-primary-hover">
               Confluence
-            </span>軟體做紀錄。{' '}
+            </span>軟體做紀錄。
           </p>
+        <div className="w-full px-10 flex justify-between items-center">
+          <img alt="Confluence" src={Confluence} />
           <BtnNextText next="/sprint/explanation" />
+        </div>
         </Basis>
       ) : (
         <Outlet />

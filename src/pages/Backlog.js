@@ -3,11 +3,15 @@ import BacklogGame from '@/components/BacklogGame';
 import Basis from '@/components/general/Basis';
 import BtnChallengeAccept from '@/components/general/BtnChallengeAccept';
 import PO from '@/assets/intro/PO.png';
+import Jira from '@/assets/jira-logo.png';
+
 function Backlog() {
   return (
     <>
-      {useMatch('/backlog/game') ? <BacklogGame/> : (
-        <Basis role={PO} roleAlt="PO" pattern="bg-Basis-pattern-C">
+      {useMatch('/backlog/game') ? (
+        <BacklogGame />
+      ) : (
+        <Basis role={PO} roleAlt="PO" pattern="bg-base-pattern-B">
           <h4 className="card_body card_title py-2.5 mb-5">產品代辦清單 (Product Backlog)</h4>
           <div className="ml-8">
             <p className="bg-white p-5 rounded-xl">
@@ -17,7 +21,10 @@ function Backlog() {
               我們公司也推薦使用<span className="text-primary">Jira</span>來做任務管理喔。
             </p>
           </div>
-          <BtnChallengeAccept next="/backlog/game" text="接受挑戰" addClass="absolute bottom-8 right-8" />
+          <div className="w-full px-10 flex justify-between items-center">
+            <img alt="Jira" src={Jira} />
+            <BtnChallengeAccept next="/backlog/game" text="接受挑戰" />
+          </div>
         </Basis>
       )}
     </>

@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import GameBasis from '@/components/general/GameBasis';
 import BtnChallengeAccept from '@/components/general/BtnChallengeAccept';
-import PO from '@/assets/intro/PO.png';
 import PAN from '@/assets/food/pan.png';
 function PlanningPoint() {
   const burgerContents = useSelector((state) => state.burgerSlice);
@@ -56,16 +55,14 @@ function PlanningPoint() {
           <img src={PAN} alt="pan" className="order-last w-[365px] self-start" />
         </div>
       </div>
-      {/* photo */}
-      <img src={PO} alt="PO" width="55" height="70" className="inline-block" />
       {/* note */}
-      <p className="w-7/12 align-middle bg-white p-2 rounded-xl text-caption leading-5 ml-2.5">
+      <p className="w-7/12 align-middle bg-white p-3 rounded-xl text-caption leading-5 ml-2.5">
         在限制的<span className="text-primary-hover">點數</span>之內，將
         <span className="text-primary-hover">產品清單內的任務移至短衝待辦清單</span>。
         就像是，我們為每個食材訂出烹飪時間，在有限的時間內選擇要烹飪食材。
       </p>
       {/* complete */}
-      <BtnChallengeAccept text="完成" next="/sprint" addClass="ml-auto" />
+      <BtnChallengeAccept text="完成" next="/sprint" />
     </GameBasis>
   );
 }

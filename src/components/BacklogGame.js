@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import GameBasis from '@/components/general/GameBasis';
 import BtnChallengeAccept from '@/components/general/BtnChallengeAccept';
-import PO from '@/assets/intro/PO.png';
 import {dragstart_handler, dragover_handler, drop_handler, dragend_handler} from "@/utils/drag";
 
 function BacklogGame() {
@@ -62,8 +61,6 @@ function BacklogGame() {
           <div className="bg-burger-bottom bg-contain py-2 priority order-5">優先度低</div>
         </div>
       </div>
-      {/* photo */}
-      <img src={PO} alt="PO" width="55" height="70" className="inline-block" />
       {/* note */}
       <p className="w-7/12 align-middle bg-white p-2 rounded-xl text-caption leading-5 ml-2.5">
         我們收到客戶的需求提示，想要一個大漢堡，一定要有

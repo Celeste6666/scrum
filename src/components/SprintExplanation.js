@@ -63,7 +63,7 @@ function SprintExplanation() {
     },
   ]);
   return (
-    <GameBasis>
+    <GameBasis addClass={"bg-base-pattern-B"}>
       {/* title */}
       <h4 className="card_body card_title py-2.5 mb-5">短衝規劃會議 (Sprint Planning)</h4>
       {/*explanation components */}
