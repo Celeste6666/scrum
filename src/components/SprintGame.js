@@ -3,7 +3,7 @@ import GameBasis from '@/components/general/GameBasis';
 import BtnChallengeAccept from '@/components/general/BtnChallengeAccept';
 import PO from '@/assets/intro/PO.png';
 import Scrum from '@/assets/Scrum.png';
-import {dragstart_handler, dragover_handler, drop_handler, dragleave_handler} from "@/utils/drag";
+import {dragstart_handler, dragover_handler, drop_handler, dragend_handler} from "@/utils/drag";
 
 function SprintGame() {
   const [scrumStep] = useState([
@@ -37,7 +37,7 @@ function SprintGame() {
         {/* blank */}
         <div className="w-full h-full grid grid-cols-3 gap-2 py-3.5 px-10 absolute top-0 left-0">
           {scrumStep.map(({ id, style }) => (
-            <div className={'drag-border w-full ' + style} key={id} data-order={id}
+            <div className={'drag-border w-full blank ' + style} key={id} data-order={id}
             onDragOver={e=>dragover_handler(e)}
             onDrop={(e)=>drop_handler(e, dragSource, dragTarget, setDragTarget)}></div>
           ))}
@@ -50,7 +50,8 @@ function SprintGame() {
                 draggable="true"
                 className="btn text-primary-active border border-primary text-caption py-3.5 scrum-drag"
                 data-order={id}
-                onDragStart={e=> dragstart_handler(e, setDragSource, dragTarget, setDragTarget)}
+                onDragStart={e=> dragstart_handler(e, setDragSource)}
+                onDragEnd={e=>dragend_handler(e, dragTarget, setDragTarget)}
               >
                 {content}
               </button>

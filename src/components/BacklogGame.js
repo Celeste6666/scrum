@@ -1,10 +1,9 @@
-import { useId, useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import GameBasis from '@/components/general/GameBasis';
 import BtnChallengeAccept from '@/components/general/BtnChallengeAccept';
 import PO from '@/assets/intro/PO.png';
-import styles from './BacklogGame.module.css';
-import {dragstart_handler, dragover_handler, drop_handler} from "@/utils/drag";
+import {dragstart_handler, dragover_handler, drop_handler, dragend_handler} from "@/utils/drag";
 
 function BacklogGame() {
     const burgerContents = useSelector((state) => state.burgerSlice);
@@ -36,7 +35,8 @@ function BacklogGame() {
                 draggable="true"
                 data-order={id}
                 className={style}
-                onDragStart={(e) => dragstart_handler(e, setDragSource, dragTarget, setDragTarget)}
+                onDragStart={(e) => dragstart_handler(e, setDragSource)}
+                onDragEnd={e=>dragend_handler(e, dragTarget, setDragTarget)}
               >
                 {content}
               </button>
@@ -50,7 +50,7 @@ function BacklogGame() {
           {burgerContents.map(({id, order}) => (
             <div
               className={
-                'w-full h-12 border border-dashed border-primary-disabled my-0.5 rounded-lg ' +
+                'w-full h-12 border border-dashed border-primary-disabled my-0.5 rounded-lg blank ' +
                 order
               }
               key={id}

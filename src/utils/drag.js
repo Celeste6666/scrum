@@ -13,46 +13,45 @@ const recoverParent = (target) => {
 
 // target => div dragSource=>button
 const changePosition = (target, dragSource, dragTarget, setDragTarget) => {
-  if (target !== null) {
-  recoverParent(dragSource);
-    // 移到正確位置
-    if (dragSource.dataset.order === target.dataset.order) {
-      if (dragSource.classList.contains('scrum-drag')) {
-        dragSource.classList.add('bg-primary');
-      }
-      dragSource.classList.add('active');
-      target.classList.remove('border', 'border-dashed');
-      target.classList.add('border-0');
-
-      // 將正確的button添加到 dragTarget ==> 用來判斷是否完成
-      if (dragTarget.findIndex((id) => id === dragSource.dataset.order) === -1) {
-        setDragTarget([...dragTarget, dragSource.dataset.order]);
-      }
+  // 移到正確位置
+  if (dragSource.dataset.order === target.dataset.order) {
+    if (dragSource.classList.contains('scrum-drag')) {
+      dragSource.classList.add('bg-primary');
     }
-    // 移到錯誤位置
-    else {
-      target.classList.remove('border-dashed');
-      target.classList.add('border-select-error');
-      if (dragSource.classList.contains('scrum-drag')) {
-        dragSource.classList.add('bg-white');
-        dragSource.classList.remove('border', 'border-primary');
-      }
-      if (dragTarget.findIndex((id) => id === dragSource.dataset.order) !== -1) {
-        setDragTarget(dragTarget.filter((id) => id !== dragSource.dataset.order));
-      }
+    dragSource.classList.add('active');
+    target.classList.remove('border', 'border-dashed');
+    target.classList.add('border-0');
+
+    // 將正確的button添加到 dragTarget ==> 用來判斷是否完成
+    if (dragTarget.findIndex((id) => id === dragSource.dataset.order) === -1) {
+      setDragTarget([...dragTarget, dragSource.dataset.order]);
+    }
+  }
+  // 移到錯誤位置
+  else {
+    target.classList.remove('border-dashed');
+    target.classList.add('border-select-error');
+    if (dragSource.classList.contains('scrum-drag')) {
+      dragSource.classList.add('bg-white');
+      dragSource.classList.remove('border', 'border-primary');
+    }
+    if (dragTarget.findIndex((id) => id === dragSource.dataset.order) !== -1) {
+      setDragTarget(dragTarget.filter((id) => id !== dragSource.dataset.order));
     }
   }
 };
-export const dragstart_handler = (e, setDragSource, dragTargetList, setDragTarget) => {
+export const dragstart_handler = (e, setDragSource, ) => {
   // DataTransfer.effectAllowed 属性指定为拖动源设置所需的拖动效果，应该在dragstart事件中设置此属性
   e.dataTransfer.effectAllowed = 'move';
-  console.log('dragstart_handler', e.target.parentElement);
-
   // 將目前移動的 button 存在 dragSource
   setDragSource(e.target);
+  recoverParent(e.target);
+};
+
+export const dragend_handler = (e, dragTargetList, setDragTarget) => {
   // 如果目前已經在正確位置時，button(e.target)、div 的狀態
-  if (e.target.dataset.order === e.target.parentElement.dataset.order) {
-    changePosition(null, e.target, dragTargetList, setDragTarget);
+  if(e.target.parentElement.classList.contains("blank")) {
+    changePosition(e.target.parentElement, e.target, dragTargetList, setDragTarget);
   }
 };
 

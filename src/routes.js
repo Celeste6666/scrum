@@ -11,6 +11,7 @@ import Sprint from "./pages/Sprint";
 import SprintExplanation from "./components/SprintExplanation";
 import SprintGame from "./components/SprintGame";
 import Retrospective from "./pages/Retrospective";
+import RetrospectiveChat from "./components/RetrospectiveChat";
 import Material from "./pages/Material";
 import Award from "./pages/Award";
 const routes = [
@@ -72,7 +73,13 @@ const routes = [
   },
   {
     path: "/retrospective",
-    element: <Retrospective/>
+    element: <Retrospective/>,
+    children: [
+      {
+        path: "chat",
+        element: <RetrospectiveChat/>
+      }
+    ]
   },
   {
     path: "/material",
