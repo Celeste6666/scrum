@@ -7,9 +7,7 @@ import DT1 from '@/assets/meeting/DT1.png';
 import DT2 from '@/assets/meeting/DT2.png';
 import Jira from '@/assets/jira-logo.png';
 import styles from '@/components/PlanningChat.module.css';
-
 const { scrollbar } = styles;
-
 function PlanningChat() {
   const [contents] = useState([
     {
@@ -79,6 +77,14 @@ function PlanningChat() {
       ),
     },
   ]);
+
+  const [btnDisabled, setBtnDisabled] = useState(true);
+
+  const scrollContent = (e) => {
+    if(e.target.scrollTop >= 415) {
+      setBtnDisabled(false)
+    }
+  }
   return (
     <GameBasis>
       {/* title */}
@@ -86,8 +92,9 @@ function PlanningChat() {
       {/*chat components */}
       <div
         className={
-          ' w-full border rounded-xl h-96 py-3 px-10 rounded-xl overflow-y-scroll ' + scrollbar
+          'w-full border rounded-xl h-96 py-3 px-10 rounded-xl overflow-y-scroll ' + scrollbar
         }
+        onScroll={e =>scrollContent(e)}
       >
         {contents.map(({ id, person, position, text }) => (
           <div className="flex items-center mt-3" key={id}>
@@ -102,7 +109,7 @@ function PlanningChat() {
       {/* photo */}
       <img src={Jira} alt="Jira" className="inline-block" />
       {/* button */}
-      <BtnChallengeAccept text="接受挑戰" next="/planning/point" addClass="ml-auto" />
+      <BtnChallengeAccept text="接受挑戰" next="/planning/point" addClass={"ml-auto "+(btnDisabled? "disabled" : "")} />
     </GameBasis>
   );
 }

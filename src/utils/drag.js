@@ -12,7 +12,7 @@ const recoverParent = (target) => {
 };
 
 // target => div dragSource=>button
-const changePosition = (target, dragSource, dragTarget, setDragTarget) => {
+const changePosition = (target, dragSource, dragTargetList, setDragTargetList) => {
   // 移到正確位置
   if (dragSource.dataset.order === target.dataset.order) {
     if (dragSource.classList.contains('scrum-drag')) {
@@ -23,8 +23,8 @@ const changePosition = (target, dragSource, dragTarget, setDragTarget) => {
     target.classList.add('border-0');
 
     // 將正確的button添加到 dragTarget ==> 用來判斷是否完成
-    if (dragTarget.findIndex((id) => id === dragSource.dataset.order) === -1) {
-      setDragTarget([...dragTarget, dragSource.dataset.order]);
+    if (dragTargetList.findIndex((id) => id === dragSource.dataset.order) === -1) {
+      setDragTargetList([...dragTargetList, dragSource.dataset.order]);
     }
   }
   // 移到錯誤位置
@@ -35,12 +35,12 @@ const changePosition = (target, dragSource, dragTarget, setDragTarget) => {
       dragSource.classList.add('bg-white');
       dragSource.classList.remove('border', 'border-primary');
     }
-    if (dragTarget.findIndex((id) => id === dragSource.dataset.order) !== -1) {
-      setDragTarget(dragTarget.filter((id) => id !== dragSource.dataset.order));
+    if (dragTargetList.findIndex((id) => id === dragSource.dataset.order) !== -1) {
+      setDragTargetList(dragTargetList.filter((id) => id !== dragSource.dataset.order));
     }
   }
 };
-export const dragstart_handler = (e, setDragSource, ) => {
+export const dragstart_handler = (e, setDragSource) => {
   // DataTransfer.effectAllowed 属性指定为拖动源设置所需的拖动效果，应该在dragstart事件中设置此属性
   e.dataTransfer.effectAllowed = 'move';
   // 將目前移動的 button 存在 dragSource
@@ -48,10 +48,10 @@ export const dragstart_handler = (e, setDragSource, ) => {
   recoverParent(e.target);
 };
 
-export const dragend_handler = (e, dragTargetList, setDragTarget) => {
+export const dragend_handler = (e, dragTargetList, setDragTargetList) => {
   // 如果目前已經在正確位置時，button(e.target)、div 的狀態
-  if(e.target.parentElement.classList.contains("blank")) {
-    changePosition(e.target.parentElement, e.target, dragTargetList, setDragTarget);
+  if (e.target.parentElement.classList.contains('blank')) {
+    changePosition(e.target.parentElement, e.target, dragTargetList, setDragTargetList);
   }
 };
 
@@ -65,13 +65,24 @@ export const dragover_handler = (e) => {
 };
 
 // dragSource 為被移動的 button
-export const drop_handler = (e, dragSource, dragTarget, setDragTarget) => {
+export const drop_handler = (e, dragSource, dragTargetList, setDragTargetList) => {
   // 瀏覽器預設是不能在拖曳後進行放置，所以必須取消預設行為
   e.preventDefault();
   // target 為外框
   const target = e.target;
+  if(target.tagName === "DIV" && target.children.length === 0) {
   target.appendChild(dragSource);
-  changePosition(target, dragSource, dragTarget, setDragTarget);
+    if (dragSource.dataset.order) {
+    changePosition(target, dragSource, dragTargetList, setDragTargetList);
+  } else {
+    if (target.classList.contains('blank')) {
+      setDragTargetList([...dragTargetList, dragSource.dataset.point]);
+    } else {
+      const index = dragTargetList.findIndex((d) => d === dragSource.dataset.point);
+      setDragTargetList(dragTargetList.filter((id, i) => i !== index));
+    }
+  }
+}
 };
 
 /*

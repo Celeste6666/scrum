@@ -6,7 +6,9 @@ import routes from "./routes";
 import {Provider} from "react-redux";
 import store from "@/redux/store";
 
-const router = createBrowserRouter(routes);
+const router = createBrowserRouter(routes, {
+  basename:"/scrum"
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

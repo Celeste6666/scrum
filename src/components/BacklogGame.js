@@ -9,7 +9,7 @@ function BacklogGame() {
 
   const [dragSource, setDragSource] = useState(null);
 
-  const [dragTarget, setDragTarget] = useState([]);
+  const [dragTargetList, setDragTargetList] = useState([]);
 
   return (
     <GameBasis>
@@ -35,7 +35,7 @@ function BacklogGame() {
                 data-order={id}
                 className={style}
                 onDragStart={(e) => dragstart_handler(e, setDragSource)}
-                onDragEnd={e=>dragend_handler(e, dragTarget, setDragTarget)}
+                onDragEnd={e=>dragend_handler(e, dragTargetList, setDragTargetList)}
               >
                 {content}
               </button>
@@ -54,7 +54,7 @@ function BacklogGame() {
               }
               key={id}
               data-order={id}
-              onDrop={(e) => drop_handler(e, dragSource, dragTarget, setDragTarget)}
+              onDrop={(e) => drop_handler(e, dragSource, dragTargetList, setDragTargetList)}
               onDragOver={(e) => dragover_handler(e)}
             ></div>
           ))}
@@ -69,7 +69,7 @@ function BacklogGame() {
         <span className="text-primary-hover">優先順序</span>。
       </p>
       {/* complete */}
-      <BtnChallengeAccept text="完成" next="/planning" addClass={dragTarget.length !== 4 ? "disabled ml-auto" : "ml-auto"} />
+      <BtnChallengeAccept text="完成" next="/planning" addClass={dragTargetList.length !== 4 ? "disabled ml-auto" : "ml-auto"} />
     </GameBasis>
   );
 }

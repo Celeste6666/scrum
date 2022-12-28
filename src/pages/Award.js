@@ -17,7 +17,7 @@ function Award() {
             </p>
           </div>
           {/* complete */}
-          <BtnChallengeAccept text="獲得徽章" next="/" />
+          <BtnChallengeAccept text="獲得徽章" next="/clear" />
         </div>
       </div>
     </section>

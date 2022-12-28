@@ -1,9 +1,25 @@
+import { useState, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import GameBasis from '@/components/general/GameBasis';
 import BtnChallengeAccept from '@/components/general/BtnChallengeAccept';
 import PAN from '@/assets/food/pan.png';
+import { dragstart_handler, dragover_handler, drop_handler } from '@/utils/drag';
+
 function PlanningPoint() {
   const burgerContents = useSelector((state) => state.burgerSlice);
+  const [dragSource, setDragSource] = useState(null);
+  const [dragTargetList, setDragTargetList] = useState([]);
+  const btnDisabled = useMemo(() => {
+    let total = 0;
+    dragTargetList.forEach((point) => {
+      total += parseInt(point);
+    });
+    if (total > 20 || total <= 0) {
+        return true;
+      } else {
+        return false;
+      }
+  }, [dragTargetList]);
   return (
     <GameBasis>
       {/* title */}
@@ -21,14 +37,20 @@ function PlanningPoint() {
                 order
               }
               key={order}
-              data-order={id}
+              onDragOver={(e) => dragover_handler(e)}
+              onDrop={(e) => drop_handler(e, dragSource, dragTargetList, setDragTargetList)}
             >
               <button
                 draggable="true"
-                data-order={id}
+                data-point={point}
                 className={style + ' foodAfterEmpty relative'}
+                onDragStart={(e) => dragstart_handler(e, setDragSource)}
               >
-                <span className={style + ' foodAfterEmpty foodBeforeEmpty w-1/6 h-full absolute -left-16'}>
+                <span
+                  className={
+                    style + ' foodAfterEmpty foodBeforeEmpty w-1/6 h-full absolute -left-16'
+                  }
+                >
                   {point}
                 </span>
                 <span>{content}</span>
@@ -45,11 +67,12 @@ function PlanningPoint() {
           {burgerContents.map(({ id, order }) => (
             <div
               className={
-                'w-full h-12 border border-dashed border-primary-disabled my-0.5 rounded-lg ' +
+                'w-full h-12 border border-dashed border-primary-disabled my-0.5 rounded-lg blank ' +
                 order
               }
               key={id}
-              data-order={id}
+              onDrop={(e) => drop_handler(e, dragSource, dragTargetList, setDragTargetList)}
+              onDragOver={(e) => dragover_handler(e)}
             ></div>
           ))}
           <img src={PAN} alt="pan" className="order-last w-[365px] self-start" />
@@ -62,7 +85,7 @@ function PlanningPoint() {
         就像是，我們為每個食材訂出烹飪時間，在有限的時間內選擇要烹飪食材。
       </p>
       {/* complete */}
-      <BtnChallengeAccept text="完成" next="/sprint" />
+      <BtnChallengeAccept text="完成" next="/sprint" addClass={btnDisabled ? 'disabled' : ''} />
     </GameBasis>
   );
 }

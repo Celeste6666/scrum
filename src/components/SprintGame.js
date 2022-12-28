@@ -2,7 +2,7 @@ import { useId, useState } from 'react';
 import GameBasis from '@/components/general/GameBasis';
 import BtnChallengeAccept from '@/components/general/BtnChallengeAccept';
 import Scrum from '@/assets/Scrum.png';
-import {dragstart_handler, dragover_handler, drop_handler, dragend_handler} from "@/utils/drag";
+import { dragstart_handler, dragover_handler, drop_handler, dragend_handler } from '@/utils/drag';
 
 function SprintGame() {
   const [scrumStep] = useState([
@@ -24,7 +24,7 @@ function SprintGame() {
   ]);
   const [dragSource, setDragSource] = useState(null);
 
-    const [dragTarget, setDragTarget] = useState([]);
+  const [dragTargetList, setDragTargetList] = useState([]);
 
   return (
     <GameBasis>
@@ -36,9 +36,13 @@ function SprintGame() {
         {/* blank */}
         <div className="w-full h-full grid grid-cols-3 gap-2 py-3.5 px-10 absolute top-0 left-0">
           {scrumStep.map(({ id, style }) => (
-            <div className={'drag-border w-full blank ' + style} key={id} data-order={id}
-            onDragOver={e=>dragover_handler(e)}
-            onDrop={(e)=>drop_handler(e, dragSource, dragTarget, setDragTarget)}></div>
+            <div
+              className={'drag-border w-full blank ' + style}
+              key={id}
+              data-order={id}
+              onDragOver={(e) => dragover_handler(e)}
+              onDrop={(e) => drop_handler(e, dragSource, dragTargetList, setDragTargetList)}
+            ></div>
           ))}
         </div>
         {/* options */}
@@ -49,8 +53,8 @@ function SprintGame() {
                 draggable="true"
                 className="btn text-primary-active border border-primary text-caption py-3.5 scrum-drag"
                 data-order={id}
-                onDragStart={e=> dragstart_handler(e, setDragSource)}
-                onDragEnd={e=>dragend_handler(e, dragTarget, setDragTarget)}
+                onDragStart={(e) => dragstart_handler(e, setDragSource)}
+                onDragEnd={(e) => dragend_handler(e, dragTargetList, setDragTargetList)}
               >
                 {content}
               </button>
@@ -64,7 +68,7 @@ function SprintGame() {
         中，有三個重要的會議會執行。 嘗試安排他們的名字到正確的位置去吧!
       </p>
       {/* complete */}
-      <BtnChallengeAccept text="完成" next="/retrospective" addClass="ml-auto" />
+      <BtnChallengeAccept text="完成" next="/retrospective" addClass={"ml-auto " + (dragTargetList.length !== 3 ? "disabled": "" )} />
     </GameBasis>
   );
 }

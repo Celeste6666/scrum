@@ -1,18 +1,18 @@
 /** @type {import("tailwindcss").Config} */
-const defaultTheme = require('tailwindcss/defaultTheme');
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   plugins: [
-    require('tailwind-scrollbar')
+    require("tailwind-scrollbar")
   ],
   theme: {
     extend: {
       // 自定義的主題區
       fontFamily: {
-        'sans': ['Roboto', ...defaultTheme.fontFamily.sans],
+        "sans": ["Roboto", ...defaultTheme.fontFamily.sans],
       },
       fontSize: {
         h1: "4rem",//64
@@ -31,7 +31,7 @@ module.exports = {
         "primary-active": "#23385E",
         "primary-disabled": "#AAAAAA",
         "select-error": "#FF0000",
-        "select-hover": "#E0EEFF",
+        "select-active": "#E0EEFF",
         "burger-meat": "#922020",
         "burger-meat-active": "#611616",
         "burger-cheese": "#FFA31A",
@@ -40,14 +40,15 @@ module.exports = {
         "burger-lettuce-active": "#4E900B",
         "burger-tomato": "#F33838",
         "burger-tomato-active": "#B42A2A",
-        "role-po": "#589EFA",
+        "role-dt": "#589EFA",
         "role-sm": "#FF7B7B",
-        "role-dt": "#F07319",
-        "card": "#f6f6f6"
+        "role-dt2": "#F07319",
+        "card": "rgba(246,246,246, 0.65)"
       },
       boxShadow: {
-        'button': '0px 4px 12px #2684FF',
-        'card-body': '0px 0px 1px #0053C0 ,2px 2px 15px rgba(0, 0, 0, 0.25)'
+        "button": "0px 4px 12px #2684FF",
+        "card-body": "0px 0px 1px #0053C0 ,2px 2px 15px rgba(0, 0, 0, 0.25)",
+        "select": "0px 4px 0px #23385E;"
       },
       backgroundImage: {
         "base-pattern-A": "url('/src/assets/basePattern1.png')",
@@ -57,7 +58,7 @@ module.exports = {
         "burger-bottom": "url('/src/assets/food/burger-bottom.png')",
       },
       flex: {
-        'auto-2': '1 0 auto'
+        "auto-2": "1 0 auto"
       }
     },
   },
