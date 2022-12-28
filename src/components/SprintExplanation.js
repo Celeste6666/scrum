@@ -48,7 +48,7 @@ function SprintExplanation() {
           (Sprint Retrospective)
         </>
       ),
-      borderColor: 'border-role-po',
+      borderColor: 'border-role-dt',
       content: (
         <>
           團隊在自省會議裡, 會共同回顧該短衝歷程發生的事情。

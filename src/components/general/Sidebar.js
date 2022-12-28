@@ -9,7 +9,6 @@ function Sidebar() {
 
   const dispatch = useDispatch();
   const routerLoader = useLoaderData();
-  console.log(routerLoader)
   const CUR_PAGE = useSelector((state) => state.sidebarSlice.current_page);
   useEffect(() => {
     dispatch(changePage(routerLoader));
