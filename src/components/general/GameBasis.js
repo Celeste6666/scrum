@@ -1,8 +1,9 @@
 import PO from '@/assets/intro/PO.png';
+import Sidebar from '@/components/general/Sidebar';
 function GameBasis(props) {
   const { children, addClass } = props;
   return (
-    <section className={"card flex-col bg-cover " + (addClass? addClass : "")}>
+    <section className={"card flex-col relative" + (addClass? addClass : "")}>
       {/* title */}
       {children[0]}
       <div className="card_body flex flex-col justify-between items-center px-5 pt-5 pb-2">
@@ -18,6 +19,7 @@ function GameBasis(props) {
           {children.length >= 3 ? children[3] : ''}
         </div>
       </div>
+      <Sidebar />
     </section>
   );
 }

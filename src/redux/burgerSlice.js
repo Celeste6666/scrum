@@ -53,6 +53,7 @@ const initialState  = [
     name: "burgerSlice",
     initialState,
     reducers: {
+      getBurger:(state) => state
     }
   })
 export default burgerSlice.reducer;

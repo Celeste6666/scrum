@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useSelector } from 'react-redux';
+
 import GameBasis from '@/components/general/GameBasis';
 import BtnChallengeAccept from '@/components/general/BtnChallengeAccept';
 import PAN from '@/assets/food/pan.png';
