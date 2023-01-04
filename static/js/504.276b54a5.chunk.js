@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkscrum=self.webpackChunkscrum||[]).push([[504],{3504:function(u,e,r){r.r(e);var c=r(184);e.default=function(){return(0,c.jsx)("div",{children:"AppClear"})}}}]);
+//# sourceMappingURL=504.276b54a5.chunk.js.map

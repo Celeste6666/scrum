@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/504.276b54a5.chunk.js","mappings":"uHAMA,UANA,WACE,OACE,qCAEJ,C","sources":["components/AppClear.js"],"sourcesContent":["function AppClear() {\n  return (\n    <div>AppClear</div>\n  )\n}\n\nexport default AppClear"],"names":[],"sourceRoot":""}
